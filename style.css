@@ -94,6 +94,39 @@ h1, h2, h3, h4, h5, h6 {
   margin-block: 0.5em; 
 }
 
+
 h1 {
   font-size: 400%; 
 }
+
+/* resume */
+
+.resume-page section h2 {
+  font-size: 1.75rem;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 0.25em;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.resume-page section {
+  padding: 1rem;
+  background-color: oklch(from var(--color-accent) 95% 5% h); 
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.resume-page .resume-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resume-page .resume-header h1 {
+  margin-bottom: 0.25em;
+}
+
+.resume-page .resume-header p {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
