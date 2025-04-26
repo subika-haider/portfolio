@@ -1,73 +1,73 @@
 [
     {
       "title": "Responsive Multi-Device Web Template",
-      "image": "https://subika-haider.github.io/images/project1.png",
+      "image": "/images/project1.png",
       "description": "A mobile-first, responsive web design template built with Flexbox and CSS Grid for seamless layouts across all screen sizes.",
       "year": 2021
     },
     {
       "title": "Interactive Data Visualization Dashboard",
-      "image": "../images/project2.png",
+      "image": "/images/project2.png",
       "description": "An interactive dashboard using D3.js and Chart.js to display real-time user metrics and drill-down analytics.",
       "year": 2022
     },
     {
       "title": "BudgetBuddy: Personal Finance Tracker",
-      "image": "../images/project3.png",
+      "image": "/images/project3.png",
       "description": "A cross-platform mobile app that tracks expenses, categorizes spending, and visualizes budget trends over time.",
       "year": 2023
     },
     {
       "title": "LiveChat Pro: Real-Time Messaging App",
-      "image": "../images/project4.png",
+      "image": "/images/project4.png",
       "description": "A Node.js & Socket.io powered chat application supporting multiple rooms, direct messaging, and file sharing.",
       "year": 2020
     },
     {
       "title": "ShopEase: Full-Stack E-Commerce Platform",
-      "image": "../images/project5.png",
+      "image": "/images/project5.png",
       "description": "A React + Node.js e-commerce site featuring product listings, shopping cart, Stripe payment integration, and admin dashboard.",
       "year": 2022
     },
     {
       "title": "ImageClassify: ML Image Recognition",
-      "image": "../images/project6.png",
+      "image": "/images/project6.png",
       "description": "A TensorFlow-based machine learning model that classifies images into categories with over 90% accuracy.",
       "year": 2023
     },
     {
       "title": "SocialPulse Analytics Suite",
-      "image": "../images/project7.png",
+      "image": "/images/project7.png",
       "description": "A Python & Plotly tool aggregating social media mentions, sentiment analysis, and visualizing engagement trends.",
       "year": 2021
     },
     {
       "title": "TaskMaster Pro: Productivity & Kanban",
-      "image": "../images/project8.png",
+      "image": "/images/project8.png",
       "description": "A Vue.js web app featuring Kanban boards, task reminders, and team collaboration tools for efficient project management.",
       "year": 2024
     },
     {
       "title": "StaticSiteJS: Markdown Site Generator",
-      "image": "../images/project9.png",
+      "image": "/images/project9.png",
       "description": "A command-line static site generator in JavaScript that converts Markdown files into a themed HTML site.",
       "year": 2020
     },
     {
       "title": "WeatherAPI Service",
-      "image": "../images/project10.png",
+      "image": "/images/project10.png",
       "description": "An Express.js RESTful API that delivers current conditions and 7-day forecasts with in-memory caching for performance.",
       "year": 2023
     },
     {
       "title": "BlockVote: Blockchain Voting System",
-      "image": "../images/project11.png",
+      "image": "/images/project11.png",
       "description": "A decentralized voting platform using Ethereum smart contracts to ensure transparency and immutability of votes.",
       "year": 2024
     },
     {
       "title": "VRArch Visualizer",
-      "image": "../images/project12.png",
+      "image": "/images/project12.png",
       "description": "A Three.js and WebVR experience that lets users explore architectural models in immersive virtual reality.",
       "year": 2022
     }
