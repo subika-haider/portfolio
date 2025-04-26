@@ -1,7 +1,7 @@
 [
     {
       "title": "Responsive Multi-Device Web Template",
-      "image": "../images/project1.png",
+      "image": "https://subika-haider.github.io/images/project1.png",
       "description": "A mobile-first, responsive web design template built with Flexbox and CSS Grid for seamless layouts across all screen sizes.",
       "year": 2021
     },
