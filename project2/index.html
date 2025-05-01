@@ -1,78 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project II</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project II</title>
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-    <main class="project-content">
-        <h2>Project 2: Persuasive/Deceptive Visualizations</h2>
-    
-        <p> Proposition: The New York Police Department (NYPD) holds officers accountable when civilian complaints are filed.</p>
+  <main class="project-content">
+    <h2>Project 2: Persuasive/Deceptive Visualizations</h2>
+    <p>
+      Main Proposition: The New York Police Department (NYPD) holds officers accountable 
+      when civilian complaints are filed.
+    </p>
 
-        <section class="viz-container">
-          
-          <div class="viz">
-            <img src="../images/river_of_accountability.png"
-                 alt="Streamgraph: River of Accountability" />
-            
-                 <div class="deception-scale">
-                  <div class="scale-bar"></div>
-                  <div class="scale-indicator indicator-fully-deceptive"></div>
+    <section class="viz-container">
 
-                  <ul class="scale-ticks">
-                    <li>Fully deceptive</li>
-                    <li aria-hidden="true"></li>
-                    <li> Neutral</li>
-                    <li aria-hidden="true"></li>
-                    <li>Fully earnest</li>
-                  </ul>
-                </div>
+      
+      <div class="viz">
+        <img
+          src="../images/river_of_accountability.png"
+          alt="Streamgraph: River of Accountability"
+        />
 
-            <ul>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-    
-          
-          <div class="viz">
-            <img src="../images/justice_funnel.png"
-                 alt="Funnel: Complaints vs. Substantiated Charges" />
-            
-                 <div class="deception-scale">
-                  <div class="scale-bar"></div>
-                  <div class="scale-indicator indicator-neutral "></div>
+        <div class="deception-scale">
+          <div class="scale-bar"></div>
+          <div class="scale-indicator indicator-negative "></div>
+          <ul class="scale-ticks">
+            <li>Fully deceptive</li>
+            <li aria-hidden="true"></li>
+            <li>Neutral</li>
+            <li aria-hidden="true"></li>
+            <li>Fully earnest</li>
+          </ul>
+        </div>
+      </section>
 
-                  <ul class="scale-ticks">
-                    <li>Fully deceptive</li>
-                    <li aria-hidden="true"></li>
-                    <li> Neutral</li>
-                    <li aria-hidden="true"></li>
-                    <li>Fully earnest</li>
-                  </ul>
-                </div>
+        <section class="design-summary">
+          <h3>Data Transformations Applied</h3>
+          <ul>
+            <li>Created <code>is_substantiated</code> by testing if <code>board_disposition</code> starts with “Substantiated.”</li>
+            <li>Mapped every disposition to either “Substantiated” or “Other.”</li>
+            <li>Grouped by <code>year_received</code> and <code>disposition_category</code>, then extracted the “Substantiated” series.</li>
+            <li>Trimmed to ≤ 2019 to avoid a misleading zero for 2020.</li>
+          </ul>
 
-            <ul>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
+          <h3>Key Design Decisions</h3>
+          <ol>
+            <li> <strong> Filled under the curve with vibrant green </strong> to amplify perceived growth and tie “accountability” to a positive hue. Alternatively, I considered designing a plain line plot or one with gray fill but I ended up choosing green fill to heighten emotional impact. <strong> Score: -1 </strong>
+            </li>
+            <li> <strong>Excluded 2020 (no data) </strong> to prevent a false downturn, keeping the chart clean and focused on real trends. Alternatively, I considered showing a "no data" marker or a gray out point but I ended up settling on a clean cutoff for clarity. <strong> Score: +2 </strong>
+            </li>
+            <li> <strong>Hid all non-substantiated counts</strong> to isolate the rise in substantiations, maximizing emotional impact while compromising on context. Alternatively, I considered designing a dual-line chart but I ended up going with data hiding instead for maximum narrative focus. <strong> Score: -2 </strong>
+            </li>
+            <li> <strong>Added an annotation implying causality</strong> between policy change & spike in substantiations, subtly guiding viewer interpretation. Alternatively, I considered adding a dashed, vertical line but I ended up deciding against it because it made the visualization look too busy. <strong> Score: -1 </strong>
+            </li>
+            <li> <strong>Added a bold frame to emphasize the growth trend </strong>and have a stronger impact on the viewer. Alternatively, I considered not adding a frame altogether but I ended up deciding to go with it because it helped make the chart pop. <strong> Score: +1 </strong>
+            </li>
+          </ol>
         </section>
-    
-        <section class="reflection">
-          <h2>Final Reflection</h2>
-          <p>
-            
-          </p>
+      </div>
+
+      
+      <div class="viz">
+        <img
+          src="../images/justice_funnel.png"
+          alt="Funnel: Complaints vs. Substantiated Charges"
+        />
+
+        <div class="deception-scale">
+          <div class="scale-bar"></div>
+          <div class="scale-indicator indicator-positive"></div>
+          <ul class="scale-ticks">
+            <li>Fully deceptive</li>
+            <li aria-hidden="true"></li>
+            <li>Neutral</li>
+            <li aria-hidden="true"></li>
+            <li>Fully earnest</li>
+          </ul>
+        </div>
+      </div>
+
+        <section class="design-summary">
+        <h3>Data Transformations Applied</h3>
+          <ul>
+            <li>Computed <code>total_complaints</code> and <code>substantiated</code> counts.</li>
+            <li>Created a two‐element <code>stages</code> list and corresponding <code>values</code> for the two bars.</li>
+          </ul>
+
+          <h3>Key Design Decisions</h3>
+              <ol>
+      
+                <li> <strong>Showed “Complaints Filed” vs. “Complaints Substantiated” as adjacent bars </strong>to make the attrition immediately obvious. I did find myself considering multiple different types of charts but I ended up going with a simple bar chart because of their directness and ease of interpretation. <strong>Score: +2 </strong> 
+        
+                </li>
+
+                <li> <strong>Added bold numeric labels on top of each bar </strong> so viewers can immediately grasp exact complaint counts without referring to the axis. I did consider omitting them for a cleaner look but I ended up keeping them to maximize clarity and reduce eye movement. <strong>Score: +2 </strong> 
+                  
+                </li>
+
+                <li> <strong>Used dark grey for total complaints and red for substantiated  </strong> to highlight the sharp drop-off. I chose the color red to evoke urgency and emotional impact because I did consider choosing a blue-orange palette at one point. <strong>Score: +1 </strong> 
+                  
+                </li>
+                
+                <li> <strong>Used a metaphor in the title to stress disparity.</strong> I opted for emotive phrasing to to drive home the narrative instead of using a neutral, descriptive title. <strong>Score: -1 </strong> 
+                  
+                </li>
+              </ol>
+
         </section>
-      </main>
+      </div>
 
+    </section>
 
+    <section class="reflection">
+      <h2>Final Reflection</h2>
+      <div class="reflection-text">
+      <p>
+        One of the hardest parts of this project for me was just getting started. Picking a dataset and narrowing it down to a single, focused proposition was more difficult than I expected—there were so many directions I could have taken, and I really wanted to do something impactful. Once I finally committed to the NYPD complaints data and shaped my proposition around accountability, the rest of the project came together more easily. The data transformation steps were manageable, and actually coding the visualizations and building the HTML page felt pretty straightforward, especially after all the practice we have gotten in our labs.
+      </p>
+      <p>
+        What took more effort this time around was thinking through each design choice. Unlike Project 1, where I was still figuring out how much visual design can shape interpretation, I went into this one much more aware of the weight behind every decision. I found myself second-guessing things like color, annotations, and even what data to include or leave out. A lot of that came into focus while I was scoring each design choice on the deception–earnestness scale, which honestly ended up being one of my favorite parts of the project—especially building that scale out visually with CSS.
+      </p>
+      <p>
+        This project really helped me see how blurry the line between persuasive and misleading can be. It is easy to think of “deceptive” as something obviously wrong, but in reality, a lot of persuasive choices live in a gray area. For me, ethical visualization is not about avoiding all persuasion, instead it is about being transparent about what I am showing, what I am not, and why. That way, even if the viewer is being nudged in a certain direction, they have enough context to draw their own conclusions.
+      </p>
+    </div>
+    </section>
+  </main>
 
-    <script src="../global.js" type="module"></script>
+  <script src="../global.js" type="module"></script>
 </body>
 </html>

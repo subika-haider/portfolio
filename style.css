@@ -231,7 +231,6 @@ h1 {
 
 /* project 2 */
 
-/* center the project content and constrain width */
 .project-content {
   max-width: 800px;
   margin: 0 auto;
@@ -239,33 +238,28 @@ h1 {
   padding: 2rem 1rem;
 }
 
-/* stack each viz vertically, center aligned */
 .viz-container {
   display: flex;
-  flex-direction: row;       /* row instead of column */
-  justify-content: center;   /* center the items horizontally */
-  align-items: flex-start;   /* align tops */
-  gap: 2rem;                 /* space between them */
-  flex-wrap: wrap;           /* wrap on narrow viewports */
+  flex-direction: row;       
+  justify-content: center;   
+  align-items: flex-start;   
+  gap: 2rem;                 
+  flex-wrap: wrap;         
   margin-bottom: 2rem;
   margin-top: 2rem; 
 }
 
-
-
-/* ensure images are responsive and centered */
 .viz img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
 
-  border: 1px solid #333;   /* or #000 for pure black, #ccc for light gray */
-  padding: 4px;             /* optional—gives a little breathing room */
+  border: 1px solid #333;   
+  padding: 4px;           
   box-sizing: border-box;
 }
 
-/* style the deception/earnestness scale */
 .scale {
   margin: 0.5rem 0 1rem;
   font-size: 1rem;
@@ -275,7 +269,6 @@ h1 {
   font-weight: bold;
 }
 
-/* bullet lists under each viz, limited width */
 .viz ul {
   list-style: disc inside;
   text-align: left;
@@ -283,7 +276,6 @@ h1 {
   margin: 0 auto;
 }
 
-/* final reflection block, same max width */
 .reflection {
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -306,33 +298,31 @@ h1 {
   height: 8px;
   background: linear-gradient(
     to right,
-    #D32F2F,         /* red at −2 */
-    #FFC107 40%,     /* amber around 0 */
-    #388E3C          /* green at +2 */
+    #D32F2F,        
+    #FFC107 40%,     
+    #388E3C         
   );
   border-radius: 4px;
   position: relative;
 }
 
-/* remove default list styling */
 .scale-ticks {
-  list-style: none;       /* no bullets */
+  list-style: none;      
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
-  top: -4px;              /* pull ticks up over the bar */
+  top: -4px;            
 }
 
-/* each tick gets a pseudo-element for the vertical line */
 .scale-ticks li {
-  list-style: none;            /* ensure no bullets */
-  flex: 1;                     /* equally spaced */
-  display: flex;               /* flex container */
-  flex-direction: column;      /* stack tick + text vertically */
-  align-items: center;         /* center horizontally */
+  list-style: none;            
+  flex: 1;                     
+  display: flex;               
+  flex-direction: column;      
+  align-items: center;         
   text-align: center;
   font-size: 0.9rem;
   color: #333;
@@ -343,12 +333,11 @@ h1 {
   width: 2px;
   height: 8px;
   background: #333;
-  margin-bottom: 4px;          /* space between line and label */
+  margin-bottom: 4px;         
 }
 
 .scale-ticks li:first-child::before,
 .scale-ticks li:last-child::before {
-  /* make end-ticks a bit taller */
   height: 12px;
 }
 
@@ -364,8 +353,25 @@ h1 {
   z-index: 2;
 }
 
-.indicator-fully-deceptive { left: 10%; }  /* tick #1 */
-.indicator-negative        { left: 30%; }  /* tick #2 (hidden label) */
-.indicator-neutral         { left: 50%; }  /* tick #3 */
-.indicator-positive        { left: 70%; }  /* tick #4 (hidden label) */
-.indicator-fully-earnest   { left: 90%; }  /* tick #5 */
+.indicator-fully-deceptive { left: 10%; }  
+.indicator-negative        { left: 30%; }  
+.indicator-neutral         { left: 50%; }  
+.indicator-positive        { left: 70%; }  
+.indicator-fully-earnest   { left: 90%; }  
+
+.design-summary {
+  max-width: 800px;    
+  margin: 2rem auto;   
+  text-align: left;    
+}
+
+.reflection {
+  max-width: 800px;        
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.reflection-text p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
