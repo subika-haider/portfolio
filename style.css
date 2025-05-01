@@ -228,3 +228,144 @@ h1 {
   font-weight: 500;
   margin: 0;
 }
+
+/* project 2 */
+
+/* center the project content and constrain width */
+.project-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* stack each viz vertically, center aligned */
+.viz-container {
+  display: flex;
+  flex-direction: row;       /* row instead of column */
+  justify-content: center;   /* center the items horizontally */
+  align-items: flex-start;   /* align tops */
+  gap: 2rem;                 /* space between them */
+  flex-wrap: wrap;           /* wrap on narrow viewports */
+  margin-bottom: 2rem;
+  margin-top: 2rem; 
+}
+
+
+
+/* ensure images are responsive and centered */
+.viz img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+  border: 1px solid #333;   /* or #000 for pure black, #ccc for light gray */
+  padding: 4px;             /* optional—gives a little breathing room */
+  box-sizing: border-box;
+}
+
+/* style the deception/earnestness scale */
+.scale {
+  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+.scale-value {
+  font-weight: bold;
+}
+
+/* bullet lists under each viz, limited width */
+.viz ul {
+  list-style: disc inside;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* final reflection block, same max width */
+.reflection {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  text-align: left;
+  padding: 1rem 0;
+}
+.reflection h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.deception-scale {
+  width: 80%;
+  max-width: 400px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.scale-bar {
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    #D32F2F,         /* red at −2 */
+    #FFC107 40%,     /* amber around 0 */
+    #388E3C          /* green at +2 */
+  );
+  border-radius: 4px;
+  position: relative;
+}
+
+/* remove default list styling */
+.scale-ticks {
+  list-style: none;       /* no bullets */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  top: -4px;              /* pull ticks up over the bar */
+}
+
+/* each tick gets a pseudo-element for the vertical line */
+.scale-ticks li {
+  list-style: none;            /* ensure no bullets */
+  flex: 1;                     /* equally spaced */
+  display: flex;               /* flex container */
+  flex-direction: column;      /* stack tick + text vertically */
+  align-items: center;         /* center horizontally */
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.scale-ticks li::before {
+  content: "";
+  width: 2px;
+  height: 8px;
+  background: #333;
+  margin-bottom: 4px;          /* space between line and label */
+}
+
+.scale-ticks li:first-child::before,
+.scale-ticks li:last-child::before {
+  /* make end-ticks a bit taller */
+  height: 12px;
+}
+
+.scale-indicator {
+  position: absolute;
+  top: -2px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #000;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.indicator-fully-deceptive { left: 10%; }  /* tick #1 */
+.indicator-negative        { left: 30%; }  /* tick #2 (hidden label) */
+.indicator-neutral         { left: 50%; }  /* tick #3 */
+.indicator-positive        { left: 70%; }  /* tick #4 (hidden label) */
+.indicator-fully-earnest   { left: 90%; }  /* tick #5 */
