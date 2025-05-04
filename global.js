@@ -144,10 +144,21 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
       article.appendChild(img);
     }
 
+    const details = document.createElement('div');
+    details.classList.add('project-details');
+
+    const desc = document.createElement('p');
+    desc.textContent = project.description || '';
+    details.appendChild(desc);
     
-    const p = document.createElement('p');
-    p.textContent = project.description;
-    article.appendChild(p);
+    if (project.year) {
+      const yearEl = document.createElement('p');
+      yearEl.textContent = `c. ${project.year}`;
+      yearEl.classList.add('project-year');
+      details.appendChild(yearEl);
+    }
+
+    article.appendChild(details);
 
     containerElement.appendChild(article);
   });

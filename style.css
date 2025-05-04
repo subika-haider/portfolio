@@ -145,6 +145,119 @@ button[type="submit"] {
   }
 }
 
+.project-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-year {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-style: italic;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #333; 
+}
+
+/* legend + pie chart */
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: nowrap;         
+  gap: 2em;                 
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-block: 2em;
+  list-style: none;
+  overflow-x: auto;          
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.legend-item .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.chart-container {
+  display: flex;
+  align-items: center; 
+  gap: 2em;              
+}
+
+.chart-container .legend {
+  flex: 1;                                  
+  display: grid;                           
+  grid-template-columns:                   
+    repeat(auto-fit, minmax(9em, 1fr));
+  gap: 1em;                               
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 0;                                
+  list-style: none;
+}
+
+.chart-container .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.chart-container .legend-item .swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+#projects-pie-plot path {
+  cursor: pointer;
+  transition: opacity 300ms ease, fill 300ms ease;
+
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+.selected {
+  --color: #ddd700 !important;
+}
+
+#projects-pie-plot path.selected {
+  fill: var(--color) !important;
+}
+
+.legend-item.selected .swatch {
+  background-color: var(--color) !important;
+}
+
+.legend-item {
+  cursor: pointer;
+}
+
+/* search bar on 12 projects page */
+
+.searchBar {
+  display: block;           
+  width: 100%;              
+  box-sizing: border-box;   
+  margin: 0 auto 1.5rem;    
+}
+
 /* headings */
 
 h1, h2, h3, h4, h5, h6 {
@@ -375,3 +488,5 @@ h1 {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
+
+
