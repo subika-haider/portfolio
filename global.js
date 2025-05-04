@@ -139,7 +139,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     
     if (project.image) {
       const img = document.createElement('img');
-      img.src = project.image;
+      img.src = BASE_PATH + project.image.replace(/^(\.\.\/)+/, '');
       img.alt = project.title;
       article.appendChild(img);
     }
