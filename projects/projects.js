@@ -8,78 +8,68 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
   const searchInput = document.querySelector('.searchBar');
   let selectedIndex = -1;
 
-  function updateList(data) {
-    renderProjects(data, projectsContainer, 'h2');
-    if (titleEl) titleEl.textContent = `${data.length} Projects`;
-  }
-
-  function highlightSelection() {
+  function renderPieChart(projectsGiven) {
     const svg = d3.select('#projects-pie-plot');
-    svg.selectAll('path').attr('class', (_, idx) => idx === selectedIndex ? 'selected' : null);
+    svg.selectAll('path').remove();
     const legend = d3.select('.legend');
-    legend.selectAll('li').attr('class', (_, idx) => idx === selectedIndex ? 'legend-item selected' : 'legend-item');
-  }
+    legend.selectAll('li').remove();
 
-  function drawPie(dataSet) {
-    const svg = d3.select('#projects-pie-plot');
-    svg.selectAll('*').remove();
-    const legend = d3.select('.legend');
-    legend.selectAll('*').remove();
-
-    const rolled = d3.rollups(
-      dataSet,
+    let rolledData = d3.rollups(
+      projectsGiven,
       v => v.length,
       d => d.year
     );
-    const chartData = rolled.map(([year, count]) => ({ value: count, label: year }));
+    let data = rolledData.map(([year, count]) => ({ value: count, label: year }));
+    let colors = d3.scaleOrdinal(d3.schemePaired);
+    let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+    let sliceGenerator = d3.pie().value(d => d.value);
+    let arcData = sliceGenerator(data);
 
-    const colors = d3.scaleOrdinal(d3.schemePaired);
-    const arcGen = d3.arc().innerRadius(0).outerRadius(50);
-    const pieGen = d3.pie().value(d => d.value);
-    const arcs = pieGen(chartData);
-
-    arcs.forEach((d, i) => {
+    arcData.forEach((d, idx) => {
       svg.append('path')
-        .attr('d', arcGen(d))
-        .attr('fill', colors(i))
+        .attr('d', arcGenerator(d))
+        .attr('fill', colors(idx))
+        .attr('class', idx === selectedIndex ? 'selected' : null)
         .on('click', () => {
-          selectedIndex = selectedIndex === i ? -1 : i;
-          const filtered = selectedIndex === -1
-            ? dataSet
-            : dataSet.filter(p => p.year === chartData[i].label);
-          updateList(filtered);
-          highlightSelection();
+          selectedIndex = selectedIndex === idx ? -1 : idx;
+          let displayData = selectedIndex === -1
+            ? projectsGiven
+            : projectsGiven.filter(p => p.year === data[idx].label);
+          renderProjects(displayData, projectsContainer, 'h2');
+          if (titleEl) titleEl.textContent = `${displayData.length} Projects`;
+          renderPieChart(displayData);
         });
     });
 
-    chartData.forEach((d, i) => {
+    data.forEach((d, idx) => {
       legend.append('li')
-        .attr('class', 'legend-item')
-        .attr('style', `--color:${colors(i)}`)
+        .attr('class', `legend-item${idx === selectedIndex ? ' selected' : ''}`)
+        .attr('style', `--color:${colors(idx)}`)
         .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
         .on('click', () => {
-          selectedIndex = selectedIndex === i ? -1 : i;
-          const filtered = selectedIndex === -1
-            ? dataSet
-            : dataSet.filter(p => p.year === chartData[i].label);
-          updateList(filtered);
-          highlightSelection();
+          selectedIndex = selectedIndex === idx ? -1 : idx;
+          let displayData = selectedIndex === -1
+            ? projectsGiven
+            : projectsGiven.filter(p => p.year === data[idx].label);
+          renderProjects(displayData, projectsContainer, 'h2');
+          if (titleEl) titleEl.textContent = `${displayData.length} Projects`;
+          renderPieChart(displayData);
         });
     });
-
-    highlightSelection();
   }
 
-  updateList(projects);
-  drawPie(projects);
+  renderProjects(projects, projectsContainer, 'h2');
+  if (titleEl) titleEl.textContent = `${projects.length} Projects`;
+  renderPieChart(projects);
 
-  searchInput.addEventListener('input', event => {
+  searchInput.addEventListener('input', (event) => {
     selectedIndex = -1;
-    const q = event.target.value.trim().toLowerCase();
-    const filtered = projects.filter(project =>
-      Object.values(project).join(' ').toLowerCase().includes(q)
+    let query = event.target.value.trim().toLowerCase();
+    let filteredProjects = projects.filter(project =>
+      Object.values(project).join(' ').toLowerCase().includes(query)
     );
-    updateList(filtered);
-    drawPie(filtered);
+    renderProjects(filteredProjects, projectsContainer, 'h2');
+    if (titleEl) titleEl.textContent = `${filteredProjects.length} Projects`;
+    renderPieChart(filteredProjects);
   });
 })();
