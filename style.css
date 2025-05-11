@@ -489,4 +489,79 @@ h1 {
   margin-bottom: 1rem;
 }
 
+/* meta */
+
+.stats {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 0.5em 2em;
+}
+
+.stats dt { font-weight: bold; }
+.stats dd { margin: 0; }
+
+.gridlines line {
+  stroke: #ccc;
+  stroke-opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+.gridlines path {
+  display: none;
+}
+
+/* tool tip scatter plot meta page */
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+circle:hover {
+  transform: scale(1.5);
+}
+circle.selected {
+  fill: #ff6b6b;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 0.25em 1em;
+  margin: 0;
+  padding: 0.5em;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  font-size: 0.9em;
+  transition: opacity 300ms, visibility 300ms;
+}
+dl.info dt {
+  opacity: 0.7;
+}
+dl.info dd {
+  margin: 0;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+}
+dl.info[hidden]:not(:hover):not(:focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* rectangle scatter plot meta page */
+
+@keyframes marching-ants {
+  to { stroke-dashoffset: -8; }
+}
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
 
