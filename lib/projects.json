@@ -70,6 +70,12 @@
       "image": "../images/project12.png",
       "description": "A Three.js and WebVR experience that lets users explore architectural models in immersive virtual reality.",
       "year": 2022
+    },
+    {
+      "title": "Bike Watchinf",
+      "image": "../images/project12_bikewatching.png",
+      "description": "This interactive map visualizes Bluebikes traffic patterns across Boston and Cambridge. It shows station usage by time, direction (arrivals vs. departures), and overall trip volume.",
+      "year": 2025
     }
   ]
   
