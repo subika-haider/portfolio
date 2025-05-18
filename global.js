@@ -134,8 +134,19 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
     
     const heading = document.createElement(headingLevel);
-    heading.textContent = project.title;
-    article.appendChild(heading);
+    //heading.textContent = project.title;
+    //article.appendChild(heading);
+
+    if (project.url) {
+  // wrap title in a link when URL is provided
+  const link = document.createElement('a');
+  link.href = project.url;
+  link.textContent = project.title;
+  article.appendChild(link);
+} else {
+  heading.textContent = project.title;
+  article.appendChild(heading);
+}
 
     
     if (project.image) {
